@@ -149,7 +149,7 @@ install_docker() {
 
 wait_for_docker() {
 
-    while [[ -z "$(! docker stats --no-stream 2> /dev/null)" ]]; do 
+    while [[ -z "$(! docker stats --no-stream 2> /dev/null)" ]]; do
         echo "Waiting for docker to start"
         sleep 30s
     done
@@ -234,10 +234,10 @@ init_gcp_infrastructure() {
 
 # add subnet cidr to cluster template
 configure_yaml() {
-    curl -fsSLO https://github.com/bytebuilders/capi-netcfg/releases/download/v0.0.2/capi-netcfg-linux-amd64.tar.gz
-    tar -xzf capi-netcfg-linux-amd64.tar.gz
-    cp capi-netcfg-linux-amd64 /bin
-    capi-netcfg-linux-amd64 capg --subnet-cidr="${SUBNET_CIDR}" </root/cluster.yaml >/root/configured-cluster.yaml
+    curl -fsSLO https://github.com/bytebuilders/capi-config/releases/download/v0.0.1/capi-config-linux-amd64.tar.gz
+    tar -xzf capi-config-linux-amd64.tar.gz
+    cp capi-config-linux-amd64 /bin
+    capi-config-linux-amd64 capg --subnet-cidr="${SUBNET_CIDR}" </root/cluster.yaml >/root/configured-cluster.yaml
 }
 
 create_gke_cluster() {
